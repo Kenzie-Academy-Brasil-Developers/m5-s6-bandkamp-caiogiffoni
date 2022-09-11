@@ -20,7 +20,6 @@ import django_on_heroku
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -31,8 +30,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ["band-kamp-caio.herokuapp.com", "localhost"]
-
-django_on_heroku.settings(locals())
 
 
 # Application definition
@@ -196,3 +193,5 @@ if DATABASE_URL:
     )
     DATABASES["default"].update(db_from_env)
     DEBUG = False
+
+django_on_heroku.settings(locals())
