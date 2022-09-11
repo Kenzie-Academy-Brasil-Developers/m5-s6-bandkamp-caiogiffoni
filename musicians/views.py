@@ -1,12 +1,14 @@
 from albums.models import Album
 from albums.serializers import AlbumSerializer
 from django.shortcuts import get_object_or_404
+from django_filters import rest_framework as filters
 from rest_framework import generics
-from rest_framework.views import APIView, Response, status
 from songs.models import Song
 from songs.serializers import SongSerializer
 
 import musicians
+from musicians.filters import SongFilter
+from musicians.paginations import ListPagination
 
 from .models import Musician
 from .serializers import MusicianSerializer
@@ -37,6 +39,9 @@ class MusicianAlbumView(generics.ListCreateAPIView):
 
 class MusicianAlbumSongsView(generics.ListCreateAPIView):
     serializer_class = SongSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = SongFilter
+    pagination_class = ListPagination
 
     def perform_create(self, serializer):
         musician = get_object_or_404(Musician, pk=self.kwargs["musician_id"])
