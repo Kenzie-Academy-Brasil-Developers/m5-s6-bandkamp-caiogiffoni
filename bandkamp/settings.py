@@ -109,7 +109,7 @@ elif os.getenv("GITHUB_WORKFLOW"):
             "PORT": "5432",
         }
     }
-    SECRET_KEY = os.environ.get("SECRET_KEY")
+    SECRET_KEY = 'secret_key_for_workflow'
 else:
     DATABASES = {
         "default": {
