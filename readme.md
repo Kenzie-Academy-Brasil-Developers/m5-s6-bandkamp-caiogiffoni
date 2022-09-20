@@ -4,7 +4,7 @@ BandKamp
 
 ## 💻 Projeto
 
-Aplicação de porfolio.
+Aplicação de gerenciamento de discografia.
 
 ## 🔨 Implementações
 
